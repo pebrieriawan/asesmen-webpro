@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Modules</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+      #calculator {
+        background-color: #f7f7f7;
+        padding: 20px;
+        padding-right: 5px;
+      }
+      input[type="number"] {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      button {
+        width: 45%;
+        padding: 10px;
+        margin: 5px;
+      }
 
+      #result {
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 90%;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calculator">
+      <input type="number" id="num1" placeholder="Number 1" />
+      <input type="number" id="num2" placeholder="Number 2" />
+
+      <div>
+        <button id="add">Add</button>
+        <button id="subtract">Subtract</button>
+      </div>
+
+      <div>
+        <button id="multiply">Multiply</button>
+        <button id="divide">Divide</button>
+      </div>
+
+      <p id="result"></p>
+    </div>
+
+    <script>
+      class Calculator {
+        static addition(a, b) {
+          return a + b;
+        }
+
+        static subtraction(a, b) {
+          return a - b;
+        }
+
+        static multiplication(a, b) {
+          return a * b;
+        }
+
+        static division(a, b) {
+          if (b === 0) {
+            return "Cannot divide by zero";
+          } else {
+            return a / b;
+          }
+        }
+      }
+
+      document.getElementById("add").addEventListener("click", () => {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        const result = Calculator.addition(num1, num2);
+        document.getElementById("result").textContent = "Result: " + result;
+      });
+
+      document.getElementById("subtract").addEventListener("click", () => {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        const result = Calculator.subtraction(num1, num2);
+        document.getElementById("result").textContent = "Result: " + result;
+      });
+
+      document.getElementById("multiply").addEventListener("click", () => {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        const result = Calculator.multiplication(num1, num2);
+        document.getElementById("result").textContent = "Result: " + result;
+      });
+
+      document.getElementById("divide").addEventListener("click", () => {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        const result = Calculator.division(num1, num2);
+        document.getElementById("result").textContent = "Result: " + result;
+      });
+    </script>
+  </body>
+</html>
