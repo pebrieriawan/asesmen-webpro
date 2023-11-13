@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Arrow Filters</title>
+    <style>
+      .list {
+        padding: 2px;
+        margin: 5px;
+        background-color: #f1f1f1;
+        list-style-type: none;
+      }
 
+      #search {
+        padding: 5px;
+        margin: 5px;
+        margin-bottom: 20px;
+      }
+
+      #filterList {
+        padding: 0px;
+        margin: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="search" placeholder="Filter list..." />
+    <ul id="filterList">
+      <li class="list">Apple</li>
+      <li class="list">Banana</li>
+      <li class="list">Cherry</li>
+      <li class="list">Date</li>
+      <li class="list">Elderberry</li>
+    </ul>
+
+    <script>
+      document.getElementById("search").addEventListener("input", (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filter = document.getElementsByClassName("list");
+
+        Array.from(filter).forEach((list) => {
+          const listName = list.textContent.toLowerCase();
+          list.style.display = listName.includes(searchTerm) ? "block" : "none";
+        });
+      });
+    </script>
+  </body>
+</html>
